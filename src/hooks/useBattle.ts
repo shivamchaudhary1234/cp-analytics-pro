@@ -146,7 +146,7 @@ export function useBattle(userId: string) {
       .subscribe();
 
     // Load initial participants
-    supabase.from('battle_participants').select('*, profiles(*)').eq('battle_id', battle.id).then(({ data }) => {
+    supabase.from('battle_participants').select('*, profiles(*)').eq('battle_id', battle.id).then(({ data }: { data: any }) => {
       if (data) setParticipants(data as BattleParticipant[]);
     });
 
