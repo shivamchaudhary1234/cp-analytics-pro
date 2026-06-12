@@ -133,14 +133,14 @@ export function useBattle(userId: string) {
 
     const channel = supabase
       .channel(`battle-${battle.id}`)
-      .on('postgres_changes', { event: '*', schema: 'public', table: 'battles', filter: `id=eq.${battle.id}` }, (payload) => {
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'battles', filter: `id=eq.${battle.id}` }, (payload: any) => {
         setBattle(payload.new as Battle);
       })
       .on('postgres_changes', { event: '*', schema: 'public', table: 'battle_participants', filter: `battle_id=eq.${battle.id}` }, async () => {
         const { data } = await supabase.from('battle_participants').select('*, profiles(*)').eq('battle_id', battle.id);
         if (data) setParticipants(data as BattleParticipant[]);
       })
-      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'battle_submissions', filter: `battle_id=eq.${battle.id}` }, (payload) => {
+      .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'battle_submissions', filter: `battle_id=eq.${battle.id}` }, (payload: any) => {
         setBattleSubmissions((prev) => [...prev, payload.new as BattleSubmission]);
       })
       .subscribe();

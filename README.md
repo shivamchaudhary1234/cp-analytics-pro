@@ -66,7 +66,15 @@ graph TD
 
 ## 📸 Screenshots
 
-*(Add your screenshots here)*
+<div align="center">
+  <h3>📊 Dashboard & Analytics</h3>
+  <img src="screenshots/dashboard.png" width="900" alt="Dashboard" />
+  <br/><br/>
+  <div style="display: flex; gap: 10px; justify-content: center;">
+    <img src="screenshots/analytics.png" width="445" alt="Analytics" />
+    <img src="screenshots/battle.png" width="445" alt="Battle" />
+  </div>
+</div>
 
 ## 📄 License
 MIT License - see [LICENSE](LICENSE) for details.

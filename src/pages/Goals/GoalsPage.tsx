@@ -25,10 +25,10 @@ export const GoalsPage: React.FC = () => {
   // Load goal & streak
   useEffect(() => {
     if (!user?.id) return;
-    supabase.from('goals').select('*').eq('user_id', user.id).single().then(({ data }) => {
+    supabase.from('goals').select('*').eq('user_id', user.id).single().then(({ data }: { data: any }) => {
       if (data) setGoal(data as Goal);
     });
-    supabase.from('streaks').select('*').eq('user_id', user.id).single().then(({ data }) => {
+    supabase.from('streaks').select('*').eq('user_id', user.id).single().then(({ data }: { data: any }) => {
       if (data) setStreak(data as Streak);
     });
   }, [user?.id, setGoal, setStreak]);

@@ -50,7 +50,7 @@ export const ProfilePage: React.FC = () => {
   useEffect(() => {
     // Load profile from Supabase
     if (user?.id) {
-      supabase.from('profiles').select('*').eq('user_id', user.id).single().then(({ data }) => {
+      supabase.from('profiles').select('*').eq('user_id', user.id).single().then(({ data }: { data: any }) => {
         if (data) {
           setProfile(data);
           setCfHandle(data.cf_handle);
